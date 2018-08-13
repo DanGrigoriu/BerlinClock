@@ -103,6 +103,7 @@ namespace BerlinClock
             string[] timeParts;
             string hoursStr, minutesStr, secondsStr;
             StringBuilder ret = new StringBuilder();
+            int hours, minutes, seconds;
             #endregion
 
             if (IsInvalidTimeFormat(aTime))
@@ -122,9 +123,9 @@ namespace BerlinClock
                 return Resources.ClockValidation_IncorrectSplit + ex.Message;
             }
 
-            if (!Int32.TryParse(hoursStr, out int hours) || 
-                !Int32.TryParse(secondsStr, out int seconds) || 
-                !Int32.TryParse(minutesStr, out int minutes))
+            if (!Int32.TryParse(hoursStr, out hours) || 
+                !Int32.TryParse(secondsStr, out seconds) || 
+                !Int32.TryParse(minutesStr, out minutes))
                 return Resources.ClockValidation_InvalidClockConfiguration;
             
             ret.Append(MakeBerlinClockSeconds(seconds));
